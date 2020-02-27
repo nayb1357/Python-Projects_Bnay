@@ -1,0 +1,71 @@
+#main menu.
+mnmenu= '1. Order Pizza\n2. Order drinks\n3. Checkout\n4. Quit'
+#while loop.
+quit_optn=4
+optn = 0
+while optn != quit_optn:
+    print(mnmenu)
+    optn= int(input("Enter your option (1-4): "))
+    if optn == 1:
+        print("Pizza Menu")
+        pMenu= '1. Cheese lovers - $11.99\n2. Meat lovers - $14.99\n3. Veggie lovers - $12.99'
+        selection=0
+        invalid_option=4
+        while selection != invalid_option:
+            print(pMenu)
+            selection= int(input("Enter your pizza selection (1-3): "))
+            if selection==1:
+                count=int(input("How many Cheese Pizza? : "))
+                price= count* 11.99
+                #return to the main menu.
+                break
+                
+            elif selection==2:
+                count=int(input("How many Meat Lovers Pizza? : "))
+                price= count* 14.99
+                break
+            elif selection==3:
+                count=int(input("How many Veggie Pizza? : "))
+                price= count* 12.99
+                break
+            else:
+                print('invalid option. Returning to main menu')
+
+    elif optn == 2:
+        print("Drink Menu")
+        dMenu= '1. Sode - $1.50\n2. Water Bottle - $1.00'
+        selection=0
+        invalid_option=3
+        while selection != invalid_option:
+            print(dMenu)
+            selection= int(input("Enter your Drink selection (1-3): "))
+            if selection==1:
+                count=int(input("How many Soda? : "))
+                price_d= count* 1.50
+                #return to the main menu.
+                break
+                
+            elif selection==2:
+                count=int(input("How many Water Bottle? : "))
+                price_d= count* 1.00
+                break
+                
+            else:
+                print('invalid option. Returning to main menu')
+
+    elif optn == 3:
+        print("Checking out...")
+        # calculating values before tax
+        b_tax= price + price_d
+        print("Your total before tax: ",b_tax)
+        #calculating values after tax
+        a_tax= b_tax + ((b_tax * 4.3)/100)
+        print("Your total after tax: ",a_tax)
+        print("***************Thank you for using Simple Takeout***************")
+        
+    elif optn == 4:
+        print("Exiting the program...")
+        break
+else:
+    print(" Invalid Option. Returning to main menu")
+
