@@ -1,0 +1,47 @@
+# python 3.8
+# school work February, 2020.
+
+# Message Encryption and Decryption
+#-------------------------------------------------------------------------------
+
+def encryption(message, offset):
+    '''
+    Encrypts message by offset
+    Retunrs the encrypted message
+    '''
+    encry= '' #empty string to hold value of encryption.
+    for i in range(len(message)):
+        character = chr(ord(message[i]) + offset)
+        encry = encry + character
+    return encry
+    
+def decryption(encry, offset):
+    '''
+    Decrypts encrypted_message by offset
+    Retunrs the decrypted message
+    '''
+    decry = ''
+    for i in range(len(encry)): # gets length of encry and loop for decryption. 
+        character = chr(ord(encry[i]) - offset)
+        decry = decry + character
+        
+    return decry
+
+def main():
+    
+    print ('\nBasic encryption/decryption program \n')
+
+    choice = 'y'
+    while choice!= 'n':
+        message = input('\nEnter a short message to be encrypted (30 chars or less): ')
+        offset = int(input('Enter an integer offset value to be used as a key (1 to 10): '))
+        encry= encryption(message,offset)
+        decry= decryption(encry,offset)
+        print('Encrypted message: ',encry)
+        print('Decrypted message: ',decry)
+        choice = input('\nDo you want to encrypt and decrypt more messages (y or n)? ')  
+    
+    print ('\nEnd of  basic encryption program.  ')
+
+main()
+    
