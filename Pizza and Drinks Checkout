@@ -1,3 +1,7 @@
+#python 3.8
+#simple checkout- school project- February, 2020.
+
+#---------Code Starts from here-----------------
 #main menu.
 mnmenu= '1. Order Pizza\n2. Order drinks\n3. Checkout\n4. Quit'
 #while loop.
