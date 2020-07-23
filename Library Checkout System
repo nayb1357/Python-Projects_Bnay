@@ -1,0 +1,86 @@
+# python 3.8
+# Library Checkout System.
+# Date: April, 2020.
+
+# Pseudocode:
+
+#Step 1: print welcome statement and Create selection menu.
+#Step 2: Set while loop for menu options.
+#Step 3: if/else statement with availability calculations and setting up for loops
+        #for the menu selection options.
+#step 4: print exit statement for program and exit.
+#-------------------------------------------------------------------------------
+
+#available options menu.
+print('*************** Welcome to Library Checkout System ***************')
+menu= '\n1: See menu\n2: Add book\n3: Delete a book from cart\n4: Check out\n5: Exit'
+
+cart = []
+
+# Setting while loop.
+
+while True:
+    print('\nAvailable options:',menu)
+    selection= int(input('\nEnter option: '))
+    if selection==1:
+        print('*************** List of books *****************')
+        print('\nTitle               Availability')
+        print('--------------------------------')
+        
+        book_list=['Girl With No Name:Available', 'Despicable Me:Unavailable', \
+           'Journey To The Moon:Available', 'The Calculating Stars:Unvailable']
+
+        # Changing book_list into a dictionary.
+        
+        keys = ['Girl With No Name', 'Despicable Me', 'Journey To The Moon', 'The Calculating Stars']
+        values = ['Available', 'Unvailable', 'Available', 'Unvailable']
+        books = dict(zip(keys, values))
+        for i in books.keys():
+           print("{}    {}".format(i,books[i]))
+        print('*********************************')
+        
+    elif selection==2:
+        #creating empty list for available list items.
+        available_list=[]
+        print('************* Current List of Books ****************')
+        #showing only the available books.
+        for i in books.keys():
+            if books[i]=='Available':
+                available_list.append(i)
+                print('{}            {}'.format(i,books[i]))
+                
+        #Book name input.
+        book_name= input('\nEnter book title to add to cart: ')
+        for i in available_list:
+            if i.lower() == book_name.lower():
+                available_list.remove(i)
+                cart.append(i)
+                books[i]= 'Unavailable'
+                print(book_name, 'added to the cart')
+                
+    elif selection==3:
+        print('************* Current List of Books ****************')
+        for i in cart:
+            print('{}'.format(i))
+
+        book_name= input('\nEnter book title to delete from cart: ')
+        for i in cart:
+            #deleting from cart.
+            if i.lower() == book_name.lower():
+                cart.remove(i)
+                print(book_name, 'deleted from cart')
+                
+    elif selection==4:
+        print('Please Return the books within 90 days')
+        print('\nYour book cart: ')
+        #printing items on cart.
+        for i in cart:
+            print(i)
+
+    else:
+        print('************ Thanks for using library checkout system.***********')
+        #exiting from the while loop.
+        break
+                
+        
+
