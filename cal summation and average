@@ -1,0 +1,25 @@
+#Python 3.8 
+#School project February, 2020.
+
+#calculates Summation and average of series of numbers.
+#----------------------------------------------------------------------------
+
+# Summation and average of series of numbers
+
+print('Welcome to my program. This calculates Summation and average of series of numbers.')
+
+count = 0
+sum = 0
+num= 1
+
+while num!=0:
+    num = int(input("Enter a non-zero number or type 0 to exit: "))
+    sum = sum + num
+    count += 1
+if count ==0:
+    print('Enter a non-zero number or type 0 to exit: ')
+else:
+    print("Summation of numbers: ",sum)
+    print("Average of numbers: ", sum/(count-1))
+
+print('Thank you for the visit.')
