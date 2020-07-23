@@ -1,8 +1,9 @@
 #python 3.8
 #simple checkout- school project- February, 2020.
 
-#---------Code Starts from here-----------------
+#-----------------------------------------
 #main menu.
+print("Welcome to the Simple Checkout")
 mnmenu= '1. Order Pizza\n2. Order drinks\n3. Checkout\n4. Quit'
 #while loop.
 quit_optn=4
