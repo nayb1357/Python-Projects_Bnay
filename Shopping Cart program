@@ -1,0 +1,88 @@
+# Python 3.8
+# Shopping Cart Model
+# Date: April, 2020
+#----------------------------------------------------------------------------
+
+
+# Welcome statement outside of the function so that it only prints one time in the beginning. 
+print ('\n***********Welcome to Shopping at Amazing!*************')
+
+def build_dict_by_id(items):
+    dict_id = dict()
+    for i in items:
+        i = i.split (",") #spliting item by comma.
+        dict_id[i[0]] = i[1:]   #storing values to dict_id.
+    return dict_id
+
+def build_dict_by_category(items):
+    dict_category = dict()
+    for item in items:
+        item = item.split (',')  #splitting by comma.
+        #if the category is not in dict_category.
+        if (item[1]not in dict_category):
+            dict_category[item[1]] = [item[0]] #adding to dict category.
+        else:
+            dict_category[item[1]].append(item[0]) #append to the values.
+    return dict_category
+
+def checkout(cart,dict_id):
+    cost = 0 # assigning cost variable to calculate amount of item.
+    print ('\nThank you for shopping at Amazing.')
+    print ('\nYou purchased the following item(s)')
+    for i in cart:
+        print(i,dict_id[i])
+        cost = cost + float(dict_id[i][2]) #adding cost of item.
+    print('The amount is : $',cost)
+    print('*************************************')
+
+def main():
+    items = ['B001,book,Patriot Games, 15.95', 'B002,book,Origin, 19.95', 'C001,cloth,Armani Suit, 800.00',
+          'B003,book,Animal Farm, 9.97', 'B004,book,Grant, 22.50', 'E001,elect,EyePhone 10,795.00',
+          'E002,elect,First Alert Smoke Alarm, 29.95', 'F001,food,Moose Drool Ale 6-pack, 9.95',
+          'C002,cloth,Pants, 39.95', 'B005,book,Prairie Fires, 18.95', 'E003,elect,Sony Prtable Radio, 15.00',
+          'C003,cloth,Vasque Hiking Boots, 109.00', 'C004,cloth,Wool Hat, 14.00', 'F002,food,Jumbo shrimp, 12.50',
+          'E004,elect,HP Laptop, 350.00', 'C005,cloth,Wrangler Jeans, 24.50', 'B005,book,Ragtime, 17.25',
+          'F003,food,Fusili - 16 oz., 2.95', 'C006,cloth,Nike T-shirt, 19.00', 'C007,cloth,Gore-Tex Gloves, 39.00',
+          'C008,cloth,North Face Fleece Jacket, 89.95', 'C009,cloth,Nationals Logo Sweatshirt, 49.00',
+          'E005,elect,LinkSys Router, 49.95', 'F004,food,Lamb Chops, 21.95',
+          'C010,cloth,New Balance Trail Runners,69.95', 'E006,elect,Altec Lansing Speakers, 195.95',
+          'B006,book,Future Shock, 8.95', 'E007,elect,LG 55 UDTV,350.00', 'E008,elect,Dell All-in-One PC, 495.00',
+          'E009,elect,Brother Laser Printer, 99.00']
+
+
+    dict_id = build_dict_by_id(items)
+    dict_category = build_dict_by_category(items)
+    cart = []
+    item_list = []
+    for i in dict_category:
+        item_list.append(i)
+
+    # generating while loop for user inputs.
+    
+    while True:
+        # Output starts from here.
+        print ('\nWe sell items in the following categories:', item_list)
+        item = input ("\nPlease input a category name or input 'checkout' to quit: ")
+        if(item.lower() == 'checkout'):
+            #if user enters checkout then program breaks and displays checkout function.
+            checkout(cart,dict_id)
+            break
+        elif(item.lower() in item_list):
+            #if user enters items in the list then it shows category lists.
+            print ('The category contains following items:')
+            for i in dict_category[item.lower()]:
+                print ('Item ID:', i, 'Information:', dict_id[i]) #all items in item category.
+            item_id = input ('\nPlease input item ID or type any key to return: ')
+            #if user enters item ID then item is added to the cart. 
+            if item_id in dict_category[item.lower()]:
+                cart.append(item_id)
+                print(item_id, 'is added to your cart.')
+                print('Please add another item or proceed to checkout.')
+            else:
+                print('We do not have any items in category', item)
+                print('\nWe only sell items in the following categories:')
+                for i in item_list:
+                    print(i) # prints available items.
+                    
+#calling main function.
+main()
